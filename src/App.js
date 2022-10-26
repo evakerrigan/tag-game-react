@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import Settings from './components/Settings/Settings.jsx';
+import Settings from './components/selectFieldSize/selectFieldSize.jsx';
 import Board from './components/Board/Board.jsx';
 
 function App() {

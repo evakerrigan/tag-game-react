@@ -1,8 +1,8 @@
 import React from "react";
 
-function Settings() {
+function selectFieldSize() {
   return (
-    <div className="settings">
+    <div className="selectFieldSize">
 
         <ul className="wrapper list">
           <li id="3" className="list-item">3*3</li>
@@ -17,4 +17,4 @@ function Settings() {
   );
 }
 
-export default Settings;
+export default selectFieldSize;
