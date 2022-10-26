@@ -21,7 +21,7 @@ function Board() {
   return (
     <div className="board wrapper container">
 
-{  for (let row=0; row<matrixArray.length; row++) {
+{/* {  for (let row=0; row<matrixArray.length; row++) {
     for (let cell=0; cell<matrixArray[row].length; cell++) {
 
         if (matrixArray[row][cell] == 0) {
@@ -41,7 +41,7 @@ function Board() {
         }
     }
   }
-}
+} */}
 
 
 
