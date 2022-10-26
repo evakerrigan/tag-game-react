@@ -1,13 +1,16 @@
-import React from "react";
+import { React, Component } from "react";
 
-function Element({number}) {
-  return (
-    <div className="element item class-3">
 
-        {number}
+class Element extends Component {
+  render() {
+    return (
 
-    </div>
-  );
-}
+      <div className="element item class-3">
+
+      </div>
+
+      )
+    }
+  }
 
 export default Element;

@@ -10,7 +10,7 @@ function selectFieldSize() {
           <li id="5" className="list-item">5*5</li>
           <li id="6" className="list-item">6*6</li>
           <li id="7" className="list-item">7*7</li>
-          <li id="8" className="list-item">8*ghgfhghg8</li>
+          <li id="8" className="list-item">8*8</li>
         </ul>
 
     </div>
