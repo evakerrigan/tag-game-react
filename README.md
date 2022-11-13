@@ -1,5 +1,2 @@
-# tag-game-react
-
-Ссылка на деплой приложения https://evakerrigan.github.io/tag-game-react
-
-Ссылка на ветку разработки https://github.com/evakerrigan/tag-game-react/tree/master
+# evakerrigan-JSFE2022Q3
+Private repository for @evakerrigan
