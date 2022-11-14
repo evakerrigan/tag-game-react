@@ -10,7 +10,7 @@ function App() {
 
 const arr = [];
 const copyArr = [];
-const matrixArray = [];
+// const matrixArray = [];
 let index0x;//индекс 0 по оси х
 let index0y;//индекс 0 по оси y
 let indexNull;//индекс 0 в рэндомном массиве
@@ -45,7 +45,8 @@ let count = 0;//счетчик для проверки количества ин
 
   console.log('sizeBoard из консоли =', sizeBoard);
 
-  // const [matrixArray, setMatrixArray] = useState([]);
+  const [matrixArray, setMatrixArray] = useState([]);
+  // setMatrixArray(createMatrix());
 
   return (
     <div className="App">
@@ -59,6 +60,7 @@ let count = 0;//счетчик для проверки количества ин
           arr={arr}
           copyArr={copyArr}
           matrixArray={matrixArray}
+          setMatrixArray={setMatrixArray}
           index0x={index0x}
           index0y={index0y}
           indexNull={indexNull}

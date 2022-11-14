@@ -1,8 +1,8 @@
 import {createArr} from './functions/createArr.js';
 
-export const Board = ({tagNumber, arr, copyArr, matrixArray, index0x, index0y, indexNull, count}) => {
+export const Board = ({setMatrixArray, tagNumber, arr, copyArr, matrixArray, index0x, index0y, indexNull, count}) => {
 
-createArr({tagNumber, arr, copyArr, matrixArray, indexNull, count, index0x, index0y});
+createArr({setMatrixArray, tagNumber, arr, copyArr, matrixArray, indexNull, count, index0x, index0y});
 
 
 console.log('matrixArray после createArr =', matrixArray);

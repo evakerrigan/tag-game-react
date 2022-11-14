@@ -2,7 +2,7 @@
 import {searchIndex0Matrix} from './searchIndex0Matrix';
 
 //заполняем массив элементами
-export const createArr = ({tagNumber, arr, copyArr, matrixArray, indexNull, count, index0x, index0y}) => {
+export const createArr = ({setMatrixArray, tagNumber, arr, copyArr, matrixArray, indexNull, count, index0x, index0y}) => {
   console.log('----------------заполняем массив элементами-------------');
   arr = [];
   copyArr = [];
@@ -20,7 +20,7 @@ console.log('mixarr(arr) =', arr);
 //разбиение массива на подмассивы
 createMatrix();
 
-searchIndex0Matrix({matrixArray, index0x, index0y});
+// searchIndex0Matrix({setMatrixArray, matrixArray, index0x, index0y});
 console.log('%cMyProject%cline:52%cmatrixArray - НОВАЯ ИГРА', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px',
 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px',
 'color:#fff;background:rgb(39, 72, 98);padding:3px;border-radius:2px', matrixArray);
@@ -38,8 +38,11 @@ function createMatrix() {
     matrixArray[i] = arr.slice((i*tagNumber), (i*tagNumber) + tagNumber);
   }
   console.log('matrixArray =', matrixArray);
-  
+
 }
+
+// setMatrixArray(createMatrix());
+
 
 //перемешиватель элементов в массиве
 function mixarr(arr){
