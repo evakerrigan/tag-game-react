@@ -70,7 +70,13 @@ body {
   border-radius: 5px;
 }
 
-.item {
+.board{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.boardItem {
   margin: 0.5vw;
   border: 1px solid turquoise;
   text-align: center;
@@ -90,26 +96,26 @@ body {
           justify-content: center;
 }
 
-.item.item0 {
+.boardItem.item0 {
   background-color: transparent;
   color: #aaa;
   border: none;
 }
 
-.item.active {
+.boardItem.active {
   cursor: pointer;
 }
 
-.item.active:active {
+.boardItem.active:active {
   background-color: yellow;
 }
 
-.item.noactive:active {
+.boardItem.noactive:active {
   background-color: red;
 }
 
-.item.item0:active {
-  background-color: transparent;
+.boardItem.item0:active {
+ /* background-color: transparent; */
 }
 
 .list {

@@ -7,12 +7,13 @@ function mixarr(arr){
 }
 
 //разбиение массива на подмассивы
-function createMatrix() {
-  matrixArray = [];
+export function createMatrix(arr, tagNumber) {
+  const matrixArray = [];
   for (let i = 0; i <Math.ceil(arr.length/tagNumber); i++){
     matrixArray[i] = arr.slice((i*tagNumber), (i*tagNumber) + tagNumber);
   }
   console.log('matrixArray =', matrixArray);
+  return matrixArray;
 }
 
 //заполняем массив элементами

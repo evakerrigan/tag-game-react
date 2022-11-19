@@ -40,8 +40,8 @@ export function App() {
       <Header time={time} movie={movie1} />
       <div className="wrapper container">
         <Board
-          tagNumber={sizeBoard}
-          arr={stateArray}
+          sizeBoard={sizeBoard}
+          stateArray={stateArray}
          />
       </div>
 
