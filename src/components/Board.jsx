@@ -2,9 +2,6 @@ import {createArr} from './functions/createArr.js';
 
 export const Board = ({setMatrixArray, tagNumber, arr, copyArr, matrixArray, index0x, index0y, indexNull, count}) => {
 
-createArr({setMatrixArray, tagNumber, arr, copyArr, matrixArray, indexNull, count, index0x, index0y});
-
-
 console.log('matrixArray после createArr =', matrixArray);
 
     for (let row=0; row<matrixArray.length; row++) {
