@@ -43,6 +43,14 @@ export const Board = ({
     setMatrixArray(createMatrix(stateArray, sizeBoard));
   }, [stateArray, sizeBoard]);
 
+  function tagItemMove(cell) {
+    const indexCurrentItem = matrixArray
+      .flat()
+      .findIndex((item) => item === cell);
+    onDragEndCard(indexCurrentItem);
+    console.log("indexCurrentItem:", indexCurrentItem);
+  }
+
   return (
     <div className="board">
       {matrixArray.map((row, y) =>
@@ -61,12 +69,9 @@ export const Board = ({
               key={`${cell}_${y}_${x}`}
               className={`boardItem active class-${sizeBoard}`}
               draggable={"true"}
+              onClick={() => {tagItemMove(cell)}}
               onDragStart={(e) => onDragStartCard(e)}
-              onDragEnd={() => {
-                const indexCurrentItem = matrixArray.flat().findIndex((item) => item === cell);
-                onDragEndCard(indexCurrentItem);
-                console.log("indexCurrentItem:", indexCurrentItem);
-              }}
+              onDragEnd={() => {tagItemMove(cell)}}
               onDragOver={allowDrop}
             >
               {cell}
