@@ -32,7 +32,7 @@ export function App() {
 
   useEffect(() => {
     setStateArray(createArr(sizeBoard));
-    console.log('sizeBoard из = useEffect', sizeBoard);
+    console.log('sizeBoard из useEffect = ', sizeBoard);
   }, [sizeBoard]);
 
   return (

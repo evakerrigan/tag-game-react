@@ -1,45 +1,130 @@
 import {createArr, createMatrix} from './functions/createArr.js';
-const isActive = (x,y,index0xy) =>{
 
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr[i].length; j++) {
-      if (arr[i][j] == 0) {
+const isActive = (y, x, matrixArray) =>{
+
+  let index0x;
+  let index0y;
+
+  for (let i = 0; i < matrixArray.length; i++) {
+    for (let j = 0; j < matrixArray[i].length; j++) {
+      if (matrixArray[i][j] == 0) {
         index0x = j;
         index0y = i;
-        // index0Matrix = { 'x': j, 'y': i};
       }
     }
   }
 
-  return false;
+  if (((y === (index0y)) && (x === (index0x-1))) ||
+      ((y === (index0y)) && (x === (index0x+1))) ||
+      ((y === (index0y-1)) && (x === (index0x))) ||
+      ((y === (index0y+1)) && (x === (index0x)))) {
+        return true;
+      } else {
+        return false;
+      }
 }
+
 export const Board = ({
-  // setMatrixArray,
-  sizeBoard, stateArray
-  // copyArr, matrixArray,
-  // index0x, index0y, indexNull, count
+  sizeBoard, stateArray,
+  allowDrop = () => undefined,
+  onDropItem = () => undefined,
+  onDragStart = () => undefined,
+  onDragEndItem = () => undefined,
 }) => {
-  const index0xy = {x:0,y:0};
 
 const matrixArray = createMatrix(stateArray, sizeBoard);
-
 
 return (
   <div className='board'>
 {matrixArray.map((row, y) => (
   row.map((cell, x) => (
-    <div key={`${cell}_${y}_${x}`} className={[
-      `boardItem class-${sizeBoard}`,
-      (cell===0)?'item0':'',
-      isActive(x,y,index0xy)?'active':'noactive'
-      ].filter(v=>v).join(' ')}>{cell}</div>
-  ))
+
+        (cell===0)
+      ? <div key={`${cell}_${y}_${x}`}
+       className={`boardItem item0 class-${sizeBoard}`}
+                    onDragOver = {(e) => allowDrop(e)}
+                    onDrop= {(e) => onDropItem(e)}
+                    >{cell}</div>
+      : isActive(y, x, matrixArray)
+      ? <div key={`${cell}_${y}_${x}`}
+      className={`boardItem active class-${sizeBoard}`}
+                    draggable={'true'}
+                    onDragStart= {(e) => onDragStart(e)}
+                    onDragEnd= {(e) => onDragEndItem(e)}
+                    onDragOver = {(e) => allowDrop(e)}
+                    >{cell}</div>
+      : <div key={`${cell}_${y}_${x}`}
+      className={`boardItem noactive class-${sizeBoard}`}
+                    >{cell}</div>
+
+      ))
 ))}
-{/*
+
+{/* //берем и поднимаем мышкой плашку
+function onDragStart( event ) {
+  if(isPlay) {
+    audioStartPlay();
+  }
+}
+
+function allowDrop( event ) {
+  event.preventDefault(); // отмена действия браузера по умолчанию (через событие ondragover) 
+}
+
+function onDragEndItem(e) {
+  console.log('опускаем элемент onDragEndItem');
+  if(isPlay) {
+    audioStopPlay();
+  }
+  getEventElement(e);
+  searchIndexElement(eventElement);
+  newViewTag();
+}
+function onDropItem(e) {
+  console.log('кладем элемент сюда onDropItem');
+  movieCount++;
+  if (movieCount == 1) {
+    startTimer();
+  }
+  console.log('movieCount =', movieCount);  
+  movieCountHtml.textContent = movieCount;
+} */}
+
+
+
+
+
+
+
+
+{  /*
     <div className={`boardItem class-${sizeBoard} item0`}>0</div>
     <div className={`boardItem class-${sizeBoard} active`}>1</div>
     <div className={`boardItem class-${sizeBoard} noactive`}>2</div>
     <div className={`boardItem class-${sizeBoard} active`}>3</div>
+
+
+    <div
+    key={`${cell}_${y}_${x}`}
+    className={[
+      `boardItem class-${sizeBoard}`,
+      (cell===0) ? 'item0' : isActive(y, x, matrixArray) ? 'active' : 'noactive',
+      ].filter(v=>v).join(' ')}
+    {[
+      (cell===0) ? {onDragover = "allowDrop(event)"
+                    onDrop="onDropItem(event)"} :
+                    isActive(y, x, matrixArray) ? {
+                      draggable="true"
+                      onDragStart="onDragStart(event)"
+                      onDragEnd="onDragEndItem(event)"
+                      onDragover = "allowDrop(event)"
+                    } : '',
+      ].filter(v=>v).join(' ')}
+      >{cell}</div>
+
+
+
+
     */}
   </div>
 );
