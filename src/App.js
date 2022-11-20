@@ -17,7 +17,7 @@ export function App() {
   const [isPlaySound, setIsPlaySound] = useState(false);
 
   const startTimer = () => {
-    console.log('startTimer');
+    console.log("startTimer");
     if (!timerLink) {
       console.log("timerLink-start =", timerLink);
       timerLink = setInterval(() => {
@@ -28,7 +28,7 @@ export function App() {
   };
 
   const stopTimer = () => {
-    console.log('stopTimer');
+    console.log("stopTimer");
     console.log("timerLink =", timerLink);
     clearInterval(timerLink);
     timerLink = undefined;
@@ -52,13 +52,23 @@ export function App() {
       audioStartPlay();
     }
   }
-  function onDragEndCard() {
+  //меняем местами элемент массива и 0, и отрисовываем пятнашку заново
+  function newViewTag(indexCurrentItem) {
+    console.log("-----меняем местами 0 и выбранную плашку-----");
+    const zeroIndex = stateArray.findIndex((v) => v === 0);
+
+    const newIndexCurrentItem = [...stateArray];
+
+    newIndexCurrentItem[zeroIndex] = stateArray[indexCurrentItem];
+    newIndexCurrentItem[indexCurrentItem] = stateArray[zeroIndex];
+    setStateArray(newIndexCurrentItem);
+  }
+
+  function onDragEndCard(indexCurrentItem) {
     if (isPlaySound) {
       audioStopPlay();
     }
-    // getEventElement(e);
-    // searchIndexElement(eventElement);
-    // newViewTag();
+    newViewTag(indexCurrentItem);
   }
   function onDropItem(e) {
     console.log("кладем элемент сюда onDropItem");

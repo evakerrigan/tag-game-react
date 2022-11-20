@@ -26,20 +26,20 @@ const isActive = (y, x, matrixArray) => {
   }
 };
 
-function allowDrop( event ) {
-  event.preventDefault(); // отмена действия браузера по умолчанию (через событие ondragover) 
+function allowDrop(event) {
+  event.preventDefault(); // отмена действия браузера по умолчанию (через событие ondragover)
 }
 
 export const Board = ({
   sizeBoard,
   stateArray,
   onDropItem = () => undefined,
-  onDragStartCard ,
-  onDragEndCard ,
+  onDragStartCard,
+  onDragEndCard,
 }) => {
   const [matrixArray, setMatrixArray] = useState([[]]);
-//  const matrixArray = createMatrix(stateArray, sizeBoard);
-  useEffect(()=>{
+  //  const matrixArray = createMatrix(stateArray, sizeBoard);
+  useEffect(() => {
     setMatrixArray(createMatrix(stateArray, sizeBoard));
   }, [stateArray, sizeBoard]);
 
@@ -62,7 +62,11 @@ export const Board = ({
               className={`boardItem active class-${sizeBoard}`}
               draggable={"true"}
               onDragStart={(e) => onDragStartCard(e)}
-              onDragEnd={(e) => onDragEndCard(e)}
+              onDragEnd={() => {
+                const indexCurrentItem = matrixArray.flat().findIndex((item) => item === cell);
+                onDragEndCard(indexCurrentItem);
+                console.log("indexCurrentItem:", indexCurrentItem);
+              }}
               onDragOver={allowDrop}
             >
               {cell}
@@ -78,12 +82,9 @@ export const Board = ({
         )
       )}
 
- 
-
       {/* function allowDrop( e ) {
   e.preventDefault() // отмена действия браузера по умолчанию (через событие ondragover)
 } */}
-
 
       {/* function onDropItem(e) {
   console.log('кладем элемент сюда onDropItem');
@@ -94,19 +95,16 @@ export const Board = ({
   console.log('movieCount =', movieCount);
   movieCountHtml.textContent = movieCount;
 } */}
-
-
     </div>
   );
-  
-    // // addClickTag();
-    // let stringMatrixArray = matrixArray.flat().join('');
-    // console.log('stringMatrixArray =', stringMatrixArray);
-    // let stringArray = copyArr.join('').slice(1) + '0';
-    // console.log('stringArray =', stringArray);
-    // if (stringMatrixArray === stringArray) {
-    // //   stopTimer();
-    //   alert('ВЫ ВЫИГРАЛИ !');}
-    // //   setTopLocalStorage();
 
+  // // addClickTag();
+  // let stringMatrixArray = matrixArray.flat().join('');
+  // console.log('stringMatrixArray =', stringMatrixArray);
+  // let stringArray = copyArr.join('').slice(1) + '0';
+  // console.log('stringArray =', stringArray);
+  // if (stringMatrixArray === stringArray) {
+  // //   stopTimer();
+  //   alert('ВЫ ВЫИГРАЛИ !');}
+  // //   setTopLocalStorage();
 };
