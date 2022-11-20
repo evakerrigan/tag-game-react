@@ -1,5 +1,5 @@
 // import {checkInvertions} from './checkInvertions';
-import {searchIndex0Matrix} from './searchIndex0Matrix';
+// import {searchIndex0Matrix} from './searchIndex0Matrix';
 
 //перемешиватель элементов в массиве
 function mixarr(arr){

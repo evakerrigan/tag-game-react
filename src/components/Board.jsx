@@ -65,13 +65,13 @@ function onDragStart( event ) {
   if(isPlay) {
     audioStartPlay();
   }
-}
+} */}
 
-function allowDrop( event ) {
-  event.preventDefault(); // отмена действия браузера по умолчанию (через событие ondragover) 
-}
+{/* function allowDrop( e ) {
+  e.preventDefault() // отмена действия браузера по умолчанию (через событие ondragover) 
+} */}
 
-function onDragEndItem(e) {
+{/* function onDragEndItem(e) {
   console.log('опускаем элемент onDragEndItem');
   if(isPlay) {
     audioStopPlay();
@@ -79,8 +79,8 @@ function onDragEndItem(e) {
   getEventElement(e);
   searchIndexElement(eventElement);
   newViewTag();
-}
-function onDropItem(e) {
+} */}
+{/* function onDropItem(e) {
   console.log('кладем элемент сюда onDropItem');
   movieCount++;
   if (movieCount == 1) {
