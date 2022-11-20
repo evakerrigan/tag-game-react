@@ -262,13 +262,13 @@ body {
 .audio-button {
   width: 40px;
   height: 40px;
-  /* background-image: url(./../image/no-mute.png); */
+  background-image: url(./image/no-mute.png);
   background-size: cover;
   background-position: center;
   cursor: pointer;
 }
 
 .audio-button.mute {
-  /* background-image: url(./../image/mute.png); */
+  background-image: url(./image/mute.png);
 }
 /*# sourceMappingURL=style.css.map */

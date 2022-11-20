@@ -1,7 +1,7 @@
-import {createArr, createMatrix} from './functions/createArr.js';
+import { useEffect, useState } from "react";
+import { createArr, createMatrix } from "./functions/createArr.js";
 
-const isActive = (y, x, matrixArray) =>{
-
+const isActive = (y, x, matrixArray) => {
   let index0x;
   let index0y;
 
@@ -14,90 +14,85 @@ const isActive = (y, x, matrixArray) =>{
     }
   }
 
-  if (((y === (index0y)) && (x === (index0x-1))) ||
-      ((y === (index0y)) && (x === (index0x+1))) ||
-      ((y === (index0y-1)) && (x === (index0x))) ||
-      ((y === (index0y+1)) && (x === (index0x)))) {
-        return true;
-      } else {
-        return false;
-      }
-}
+  if (
+    (y === index0y && x === index0x - 1) ||
+    (y === index0y && x === index0x + 1) ||
+    (y === index0y - 1 && x === index0x) ||
+    (y === index0y + 1 && x === index0x)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 export const Board = ({
-  sizeBoard, stateArray,
+  sizeBoard,
+  stateArray,
   allowDrop = () => undefined,
   onDropItem = () => undefined,
-  onDragStart = () => undefined,
-  onDragEndItem = () => undefined,
+  onDragStartCard ,
+  onDragEndCard ,
 }) => {
+  const [matrixArray, setMatrixArray] = useState([[]]);
 
-const matrixArray = createMatrix(stateArray, sizeBoard);
+  useEffect(()=>{
+    setMatrixArray(createMatrix(stateArray, sizeBoard));
+  }, [stateArray, sizeBoard]);
 
-return (
-  <div className='board'>
-{matrixArray.map((row, y) => (
-  row.map((cell, x) => (
+  return (
+    <div className="board">
+      {matrixArray.map((row, y) =>
+        row.map((cell, x) =>
+          cell === 0 ? (
+            <div
+              key={`${cell}_${y}_${x}`}
+              className={`boardItem item0 class-${sizeBoard}`}
+              onDragOver={(e) => allowDrop(e)}
+              onDrop={(e) => onDropItem(e)}
+            >
+              {cell}
+            </div>
+          ) : isActive(y, x, matrixArray) ? (
+            <div
+              key={`${cell}_${y}_${x}`}
+              className={`boardItem active class-${sizeBoard}`}
+              draggable={"true"}
+              onDragStart={(e) => onDragStartCard(e)}
+              onDragEnd={(e) => onDragEndCard(e)}
+              onDragOver={(e) => allowDrop(e)}
+            >
+              {cell}
+            </div>
+          ) : (
+            <div
+              key={`${cell}_${y}_${x}`}
+              className={`boardItem noactive class-${sizeBoard}`}
+            >
+              {cell}
+            </div>
+          )
+        )
+      )}
 
-        (cell===0)
-      ? <div key={`${cell}_${y}_${x}`}
-       className={`boardItem item0 class-${sizeBoard}`}
-                    onDragOver = {(e) => allowDrop(e)}
-                    onDrop= {(e) => onDropItem(e)}
-                    >{cell}</div>
-      : isActive(y, x, matrixArray)
-      ? <div key={`${cell}_${y}_${x}`}
-      className={`boardItem active class-${sizeBoard}`}
-                    draggable={'true'}
-                    onDragStart= {(e) => onDragStart(e)}
-                    onDragEnd= {(e) => onDragEndItem(e)}
-                    onDragOver = {(e) => allowDrop(e)}
-                    >{cell}</div>
-      : <div key={`${cell}_${y}_${x}`}
-      className={`boardItem noactive class-${sizeBoard}`}
-                    >{cell}</div>
+ 
 
-      ))
-))}
-
-{/* //берем и поднимаем мышкой плашку
-function onDragStart( event ) {
-  if(isPlay) {
-    audioStartPlay();
-  }
+      {/* function allowDrop( e ) {
+  e.preventDefault() // отмена действия браузера по умолчанию (через событие ondragover)
 } */}
 
-{/* function allowDrop( e ) {
-  e.preventDefault() // отмена действия браузера по умолчанию (через событие ondragover) 
-} */}
 
-{/* function onDragEndItem(e) {
-  console.log('опускаем элемент onDragEndItem');
-  if(isPlay) {
-    audioStopPlay();
-  }
-  getEventElement(e);
-  searchIndexElement(eventElement);
-  newViewTag();
-} */}
-{/* function onDropItem(e) {
+      {/* function onDropItem(e) {
   console.log('кладем элемент сюда onDropItem');
   movieCount++;
   if (movieCount == 1) {
     startTimer();
   }
-  console.log('movieCount =', movieCount);  
+  console.log('movieCount =', movieCount);
   movieCountHtml.textContent = movieCount;
 } */}
 
-
-
-
-
-
-
-
-{  /*
+      {/*
     <div className={`boardItem class-${sizeBoard} item0`}>0</div>
     <div className={`boardItem class-${sizeBoard} active`}>1</div>
     <div className={`boardItem class-${sizeBoard} noactive`}>2</div>
@@ -126,9 +121,9 @@ function onDragStart( event ) {
 
 
     */}
-  </div>
-);
-/*
+    </div>
+  );
+  /*
     for (let row=0; row<matrixArray.length; row++) {
       for (let cell=0; cell<matrixArray[row].length; cell++) {
           if (matrixArray[row][cell] === 0) {
@@ -172,5 +167,4 @@ function onDragStart( event ) {
       alert('ВЫ ВЫИГРАЛИ !');}
     //   setTopLocalStorage();
 */
-
-}
+};
