@@ -7,35 +7,44 @@ import { Board } from "./components/Board";
 import { createArr } from "./components/functions/createArr";
 import { audioStartPlay, audioStopPlay } from "./utils";
 
+let timerLink;
+
 export function App() {
   const [time, setTime] = useState(0);
-  const [tagInterval, setTagInterval] = useState(1);
-  const [movie1, setMovie] = useState(0);
+  const [movieCount, setMovieCount] = useState(0);
   const [stateArray, setStateArray] = useState([]);
   const [sizeBoard, setSizeBoard] = useState(SIZE_BOARD_DEFAULT);
   const [isPlaySound, setIsPlaySound] = useState(false);
 
   const startTimer = () => {
-    if (tagInterval == 1) {
-      console.log("tagInterval-start =", tagInterval);
-      setTagInterval(
-        setInterval(() => {
-          setTime((prev) => prev + 1);
-        }, 1000)
-      );
+    console.log('startTimer');
+    if (!timerLink) {
+      console.log("timerLink-start =", timerLink);
+      timerLink = setInterval(() => {
+        setTime((prev) => prev + 1);
+      }, 1000);
+      console.log("timerLink =", timerLink);
     }
   };
+
   const stopTimer = () => {
-    console.log("tagInterval =", tagInterval);
-    clearInterval(tagInterval);
-    setTagInterval(1);
+    console.log('stopTimer');
+    console.log("timerLink =", timerLink);
+    clearInterval(timerLink);
+    timerLink = undefined;
     setTime(0);
   };
 
-  function togglePlaySound () {
-    setIsPlaySound(!isPlaySound);
+  function addMovieCount() {
+    setMovieCount((prev) => prev + 1);
+  }
+  function resetMovieCount() {
+    setMovieCount(0);
   }
 
+  function togglePlaySound() {
+    setIsPlaySound(!isPlaySound);
+  }
 
   // берем и поднимаем мышкой плашку
   function onDragStartCard() {
@@ -51,6 +60,22 @@ export function App() {
     // searchIndexElement(eventElement);
     // newViewTag();
   }
+  function onDropItem(e) {
+    console.log("кладем элемент сюда onDropItem");
+    addMovieCount();
+  }
+
+  useEffect(() => {
+    console.log("movieCount =", movieCount);
+    if (movieCount === 1) {
+      startTimer();
+    }
+    return () => {
+      // if (movieCount === 0) {
+      stopTimer();
+      //}
+    };
+  }, [movieCount]);
 
   useEffect(() => {
     setStateArray(createArr(sizeBoard));
@@ -59,7 +84,12 @@ export function App() {
 
   return (
     <div className="App">
-      <Header time={time} movie={movie1} isPlaySound={isPlaySound} togglePlaySound={togglePlaySound}/>
+      <Header
+        time={time}
+        movie={movieCount}
+        isPlaySound={isPlaySound}
+        togglePlaySound={togglePlaySound}
+      />
       <div className="wrapper container">
         <Board
           sizeBoard={sizeBoard}
@@ -71,7 +101,7 @@ export function App() {
 
       <button onClick={startTimer}>on</button>
       <button onClick={stopTimer}>off</button>
-      <button onClick={() => setMovie((prev) => prev + 1)}>+1</button>
+      <button onClick={() => addMovieCount()}>+1</button>
 
       <Footer setSizeBoard={setSizeBoard} tagNumber={sizeBoard} />
     </div>

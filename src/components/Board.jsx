@@ -26,16 +26,19 @@ const isActive = (y, x, matrixArray) => {
   }
 };
 
+function allowDrop( event ) {
+  event.preventDefault(); // отмена действия браузера по умолчанию (через событие ondragover) 
+}
+
 export const Board = ({
   sizeBoard,
   stateArray,
-  allowDrop = () => undefined,
   onDropItem = () => undefined,
   onDragStartCard ,
   onDragEndCard ,
 }) => {
   const [matrixArray, setMatrixArray] = useState([[]]);
-
+//  const matrixArray = createMatrix(stateArray, sizeBoard);
   useEffect(()=>{
     setMatrixArray(createMatrix(stateArray, sizeBoard));
   }, [stateArray, sizeBoard]);
@@ -48,7 +51,7 @@ export const Board = ({
             <div
               key={`${cell}_${y}_${x}`}
               className={`boardItem item0 class-${sizeBoard}`}
-              onDragOver={(e) => allowDrop(e)}
+              onDragOver={allowDrop}
               onDrop={(e) => onDropItem(e)}
             >
               {cell}
@@ -60,7 +63,7 @@ export const Board = ({
               draggable={"true"}
               onDragStart={(e) => onDragStartCard(e)}
               onDragEnd={(e) => onDragEndCard(e)}
-              onDragOver={(e) => allowDrop(e)}
+              onDragOver={allowDrop}
             >
               {cell}
             </div>
@@ -92,79 +95,18 @@ export const Board = ({
   movieCountHtml.textContent = movieCount;
 } */}
 
-      {/*
-    <div className={`boardItem class-${sizeBoard} item0`}>0</div>
-    <div className={`boardItem class-${sizeBoard} active`}>1</div>
-    <div className={`boardItem class-${sizeBoard} noactive`}>2</div>
-    <div className={`boardItem class-${sizeBoard} active`}>3</div>
 
-
-    <div
-    key={`${cell}_${y}_${x}`}
-    className={[
-      `boardItem class-${sizeBoard}`,
-      (cell===0) ? 'item0' : isActive(y, x, matrixArray) ? 'active' : 'noactive',
-      ].filter(v=>v).join(' ')}
-    {[
-      (cell===0) ? {onDragover = "allowDrop(event)"
-                    onDrop="onDropItem(event)"} :
-                    isActive(y, x, matrixArray) ? {
-                      draggable="true"
-                      onDragStart="onDragStart(event)"
-                      onDragEnd="onDragEndItem(event)"
-                      onDragover = "allowDrop(event)"
-                    } : '',
-      ].filter(v=>v).join(' ')}
-      >{cell}</div>
-
-
-
-
-    */}
     </div>
   );
-  /*
-    for (let row=0; row<matrixArray.length; row++) {
-      for (let cell=0; cell<matrixArray[row].length; cell++) {
-          if (matrixArray[row][cell] === 0) {
-            return (
-                    <div class="item item0 class-${tagNumber}"
-                    ondragover = "allowDrop(event)"
-                    onDrop="onDropItem(event)"
-                    >${matrixArray[row][cell]}</div>
-            )
-          } else {
-            if (((row === (index0y)) && (cell === (index0x-1))) ||
-            ((row === (index0y)) && (cell === (index0x+1))) ||
-            ((row === (index0y-1)) && (cell === (index0x))) ||
-            ((row === (index0y+1)) && (cell === (index0x)))) {
+  
+    // // addClickTag();
+    // let stringMatrixArray = matrixArray.flat().join('');
+    // console.log('stringMatrixArray =', stringMatrixArray);
+    // let stringArray = copyArr.join('').slice(1) + '0';
+    // console.log('stringArray =', stringArray);
+    // if (stringMatrixArray === stringArray) {
+    // //   stopTimer();
+    //   alert('ВЫ ВЫИГРАЛИ !');}
+    // //   setTopLocalStorage();
 
-                return (
-                    <div class="item active class-${tagNumber}"
-                    draggable="true"
-                    onDragStart="onDragStart(event)"
-                    onDragEnd="onDragEndItem(event)"
-                    ondragover = "allowDrop(event)"
-                    >${matrixArray[row][cell]}</div>
-                )
-            } else {
-                return (
-                    <div class="item noactive class-${tagNumber}"
-                    >${matrixArray[row][cell]}</div>
-                )
-            }
-
-          }
-      }
-    }
-    // addClickTag();
-    let stringMatrixArray = matrixArray.flat().join('');
-    console.log('stringMatrixArray =', stringMatrixArray);
-    let stringArray = copyArr.join('').slice(1) + '0';
-    console.log('stringArray =', stringArray);
-    if (stringMatrixArray === stringArray) {
-    //   stopTimer();
-      alert('ВЫ ВЫИГРАЛИ !');}
-    //   setTopLocalStorage();
-*/
 };
