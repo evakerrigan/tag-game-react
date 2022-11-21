@@ -422,7 +422,7 @@ function loadLocalStorage() {
 
   if (timeFlag === 1) {
     stopTimer();
-  };
+  }; 
 
   startTimer();
 
