@@ -6,6 +6,3 @@ export const SIZE_BOARD_7 = 7;
 export const SIZE_BOARD_8 = 8;
 export const SIZE_BOARD_DEFAULT = SIZE_BOARD_3;
 
-// export const arr = [];
-// export const copyArr = [];
-// export const matrixArray = [];
