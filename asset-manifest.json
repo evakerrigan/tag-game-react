@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/tag-game-react-2/static/css/main.32c436bf.css",
-    "main.js": "/tag-game-react-2/static/js/main.bd20430d.js",
-    "static/js/787.e71ca494.chunk.js": "/tag-game-react-2/static/js/787.e71ca494.chunk.js",
-    "static/media/no-mute.png": "/tag-game-react-2/static/media/no-mute.db44e89f7b608daf25ff.png",
-    "static/media/mute.png": "/tag-game-react-2/static/media/mute.caefe8e6c314d2081218.png",
-    "index.html": "/tag-game-react-2/index.html",
-    "main.32c436bf.css.map": "/tag-game-react-2/static/css/main.32c436bf.css.map",
-    "main.bd20430d.js.map": "/tag-game-react-2/static/js/main.bd20430d.js.map",
-    "787.e71ca494.chunk.js.map": "/tag-game-react-2/static/js/787.e71ca494.chunk.js.map"
+    "main.css": "/tag-game-react/static/css/main.275b973c.css",
+    "main.js": "/tag-game-react/static/js/main.9b3f6b1a.js",
+    "static/js/787.1e2fdfeb.chunk.js": "/tag-game-react/static/js/787.1e2fdfeb.chunk.js",
+    "static/media/no-mute.png": "/tag-game-react/static/media/no-mute.db44e89f7b608daf25ff.png",
+    "static/media/mute.png": "/tag-game-react/static/media/mute.caefe8e6c314d2081218.png",
+    "index.html": "/tag-game-react/index.html",
+    "main.275b973c.css.map": "/tag-game-react/static/css/main.275b973c.css.map",
+    "main.9b3f6b1a.js.map": "/tag-game-react/static/js/main.9b3f6b1a.js.map",
+    "787.1e2fdfeb.chunk.js.map": "/tag-game-react/static/js/787.1e2fdfeb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.32c436bf.css",
-    "static/js/main.bd20430d.js"
+    "static/css/main.275b973c.css",
+    "static/js/main.9b3f6b1a.js"
   ]
 }
