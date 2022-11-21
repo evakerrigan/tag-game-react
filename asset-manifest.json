@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/tag-game-react/static/css/main.9af8a7ce.css",
-    "main.js": "/tag-game-react/static/js/main.561fcb5a.js",
-    "static/js/787.1e2fdfeb.chunk.js": "/tag-game-react/static/js/787.1e2fdfeb.chunk.js",
-    "index.html": "/tag-game-react/index.html",
-    "main.9af8a7ce.css.map": "/tag-game-react/static/css/main.9af8a7ce.css.map",
-    "main.561fcb5a.js.map": "/tag-game-react/static/js/main.561fcb5a.js.map",
-    "787.1e2fdfeb.chunk.js.map": "/tag-game-react/static/js/787.1e2fdfeb.chunk.js.map"
+    "main.css": "/tag-game-react-2/static/css/main.32c436bf.css",
+    "main.js": "/tag-game-react-2/static/js/main.bd20430d.js",
+    "static/js/787.e71ca494.chunk.js": "/tag-game-react-2/static/js/787.e71ca494.chunk.js",
+    "static/media/no-mute.png": "/tag-game-react-2/static/media/no-mute.db44e89f7b608daf25ff.png",
+    "static/media/mute.png": "/tag-game-react-2/static/media/mute.caefe8e6c314d2081218.png",
+    "index.html": "/tag-game-react-2/index.html",
+    "main.32c436bf.css.map": "/tag-game-react-2/static/css/main.32c436bf.css.map",
+    "main.bd20430d.js.map": "/tag-game-react-2/static/js/main.bd20430d.js.map",
+    "787.e71ca494.chunk.js.map": "/tag-game-react-2/static/js/787.e71ca494.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9af8a7ce.css",
-    "static/js/main.561fcb5a.js"
+    "static/css/main.32c436bf.css",
+    "static/js/main.bd20430d.js"
   ]
 }
